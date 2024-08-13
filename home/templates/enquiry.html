@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block main_content %}
+<div class="container my-5 py-2">
+    <h2 class="text-center p-2">Product Enquiry</h2>
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+        <div class=" alert ={% if message.tags %}alert-{{ message.tags }}{% else %}
+            alert-info{% endif %}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <form method="post" action="/enquiry/">
+        {% csrf_token %}
+        <div class="row">
+        <div class="col mb-3">
+            {{ form.first_name.label_tag }}
+            {{ form.first_name }}
+            {% if form.first_name.errors %}
+                <div> {{ form.first_name.errors }} </div>
+            {% endif %}
+        </div>
+        <div class="col mb-3">
+            {{ form.last_name.label_tag }}
+            {{ form.last_name }}
+            {% if form.last_name.errors %}
+                <div> {{ form.last_name.errors }} </div>
+            {% endif %}
+        </div>
+    </div>
+        <div class="row">
+        <div class="col mb-3">
+            {{ form.email_address.label_tag }}
+            {{ form.email_address }}
+            {% if form.email_address.errors %}
+                <div> {{ form.email_address.errors }} </div>
+            {% endif %}
+        </div>
+       
+        <div class="col mb-3">
+            {{ form.mobile.label_tag }}
+            {{ form.mobile }}
+            {% if form.mobile.errors %}
+                <div> {{ form.mobile.errors }} </div>
+            {% endif %}
+        </div>
+    </div>
+        <div class="col mb-3">
+            {{ form.product.label_tag }}
+            {{ form.product }}
+            {% if form.product.errors %}
+                <div> {{ form.product.errors }} </div>
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ form.enqiry_message.label_tag }}
+            {{ form.enqiry_message }}
+            {% if form.enqiry_message.errors %}
+                <div> {{ form.enqiry_message.errors }} </div>
+            {% endif %}
+        </div>
+      
+      
+   
+        <button class="btn btn-primary" type="submit">Enquiry</button>
+    </form>
+</div>
+{% endblock main_content %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block main_content %}
+<div class="container my-5 py-2">
+    
+    {% if messages %}
+    <div>
+        {% for message in messages %}
+        <div class=" alert ={% if message.tags %}alert-{{ message.tags }}{% else %}
+            alert-info{% endif %}" role="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+{% endblock main_content %}
